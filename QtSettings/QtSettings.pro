@@ -6,6 +6,8 @@
 
 QT       += core gui
 
+QMAKE_CXXFLAGS += -std=c++11
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = QtSettings
@@ -13,8 +15,15 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        MainWindow.cpp
+        MainWindow.cpp \
+    SettingsDialog.cpp \
+    SettingsPage.cpp \
+    SettingBase.cpp
 
-HEADERS  += MainWindow.h
+HEADERS  += MainWindow.h \
+    SettingsDialog.h \
+    SettingsPage.h \
+    SettingBase.h
 
-FORMS    += MainWindow.ui
+FORMS    += MainWindow.ui \
+    SettingsDialog.ui
