@@ -1,22 +1,24 @@
 #ifndef SETTINGSPAGE
 #define SETTINGSPAGE
 
-#include <QWidget>
+#include <QtCore>
+#include <QLayout>
+#include <QTabWidget>
 #include <vector>
 #include "SettingBase.h"
 
-class SettingsPage
+class SettingsPage : public QObject
 {
     Q_OBJECT
 
 public:
     explicit SettingsPage(const QString & title, QObject* parent = nullptr);
-    void Add(const SettingsBase & setting);
-    const QString & Title() const;
+    void Add(const SettingBase* setting);
+    void Build(QTabWidget* tabWidget) const;
 
 private:
     QString mTitle;
-    std::vector<SettingBase> mSettings;
+    std::vector<const SettingBase*> mSettings;
 };
 
 #endif // SETTINGSPAGE

@@ -18,6 +18,7 @@ public:
     ~SettingsDialog();
 
 private:
+    void setupSettings();
     void addPage(const SettingsPage & page);
 
     Ui::SettingsDialog* ui;

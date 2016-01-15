@@ -1,15 +1,16 @@
 #ifndef SETTINGBASE
 #define SETTINGBASE
 
-#include <QObject>
-#include "SettingsPage.h"
+#include <QLayout>
 
-class SettingBase
+class SettingBase : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit SettingBase(QObject* parent = nullptr);
+    explicit SettingBase(QObject* parent = nullptr) : QObject(parent) {}
+    virtual ~SettingBase() {}
+    virtual void Build(QLayout* layout) const = 0;
 };
 
 #endif // SETTINGBASE

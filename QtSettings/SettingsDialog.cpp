@@ -8,6 +8,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     ui(new Ui::SettingsDialog)
 {
     ui->setupUi(this);
+    setupSettings();
 }
 
 SettingsDialog::~SettingsDialog()
@@ -15,13 +16,16 @@ SettingsDialog::~SettingsDialog()
     delete ui;
 }
 
+void SettingsDialog::setupSettings()
+{
+    SettingsPage page1("Page 1", this);
+    addPage(page1);
+
+    SettingsPage page2("Page 2", this);
+    addPage(page2);
+}
+
 void SettingsDialog::addPage(const SettingsPage & page)
 {
-    auto tab = new QWidget(ui->tabWidget);
-    auto layout = new QVBoxLayout(tab);
-    tab->setLayout(layout);
-
-    layout->addWidget(new QLabel("test label", layout));
-
-    ui->tabWidget->addTab(tab,)
+    page.Build(ui->tabWidget);
 }
